@@ -25,7 +25,7 @@ const AdminOrdersPage = async () => {
 
 
     return (
-        <div className="w-[80%] mx-auto">
+        <div className=" w-[100%] md:w-[80%] mx-auto">
             <Table>
                 {
                     orderData.map((order) => {

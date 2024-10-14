@@ -43,6 +43,8 @@ const ShowFood = ({ foodItems }: { foodItems?:IFood[] }) => {
       }finally{
           setLoading(false)
       }
+    }else{
+      router.push('/usernotfound')
     }
     
   }

@@ -48,19 +48,19 @@ const ExploreComponent = () => {
   }
 
   return (
-    <div className='w-[80%] mx-auto mt-4'>
+    <div className='w-[100%] px-2 md:w-[80%] mx-auto mt-4'>
         <h1 className='font-bold text-[20px]'>Explore our Menu</h1>
-        <p className='text-neutral-500'>Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise. Our meal satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
-        <div className='flex justify-evenly pt-5'>
+        <p className='text-neutral-500 text-sm md:text-lg'>Choose from a diverse menu featuring a delectable array of dishes crafted with the finest ingredients and culinary expertise. Our meal satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
+        <div className='flex flex-wrap justify-evenly pt-5'>
           {menu_list.map((i,k)=>(
             <div key={k} onClick={()=>{
               setSelectedCategory(i.menu_name);
               // fetchFoodItems(selectedCategory)
-              }} className='flex flex-col items-center gap-2'>
+              }} className='flex flex-col  items-center gap-2'>
               <div className={cn('',selectedCategory === i.menu_name && 'border border-red-500 p-1 rounded-full')}>
-                <Image src={i.menu_image} width={80} alt='' height={80}/>
+                <Image src={i.menu_image}  width={80} alt='' height={80}/>
               </div>
-                <p>{i.menu_name}</p>
+                <p className=' text-[16px]'>{i.menu_name}</p>
             </div>
           )
         

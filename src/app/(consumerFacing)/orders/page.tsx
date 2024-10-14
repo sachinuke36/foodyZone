@@ -4,6 +4,7 @@ import Order from "@/models/orderModel";
 import { User } from "@/models/userModel";
 import { getFoodData } from "../actions/getFoodData";
 import Image from "next/image";
+import { formatNumber } from "@/lib/formatter";
 
 const OrderPage = async() => {
     const session = await auth();
@@ -17,7 +18,7 @@ const OrderPage = async() => {
 
 
   return (
-    <div className="w-[80%] mt-5 mx-auto">
+    <div className="w-[100%] px-2 md:w-[80%] mt-5 mx-auto">
         <h1 className="text-[22px] font-extrabold">My orders</h1>
        
         <Table className=" my-5">
@@ -44,11 +45,8 @@ const OrderPage = async() => {
                     })
                     return (
                         <TableBody className="border" key={order._id}>
-                            <TableCell>
-                                <Image src={'/parcel_icon.png'} alt="parcel" width={50} height={50} />
-                            </TableCell>
                             <TableCell>{orderString}</TableCell>
-                            <TableCell>Rs.{(order.amount / 100)*80}</TableCell>
+                            <TableCell>Rs.{formatNumber((order.amount / 100)*80)}</TableCell>
                             <TableCell>{totalQuantity}</TableCell>
                             <TableCell>{order.status}</TableCell>
                         </TableBody>

@@ -34,23 +34,23 @@ const AddItemForm = ({ food }:{ food?: IFood | null}) => {
 
     const [priceInCents, setPriceInCents] = useState<number | undefined>(food?.price);
     return (
-        <form action={action} className='w-[80%] mx-auto p-2 flex flex-col gap-5'>
+        <form action={action} className='w-[100%] md:w-[80%] mx-auto p-2 flex flex-col gap-5'>
             <div className='flex flex-col gap-2'>
                 <Label htmlFor='file' className='text-xl font-bold'> Upload Image</Label>
-                <Input type='file' className='w-[50%]' required={food == null} id='image' name='image' />
+                <Input type='file' className='md:w-[50%]' required={food == null} id='image' name='image' />
                  {food != null && <Image alt='product image' height="400" width="400" src={food.image}/>}
                 {error.image && <div className='text-destructive'>{error.image}</div>}
             </div>
 
             <div className='flex flex-col gap-2'>
                 <Label htmlFor='Food Item name' className='text-xl font-bold' >Name of food Item</Label>
-                <Input type='text' id='name' name='name' defaultValue={food?.name} className='w-[50%]' />
+                <Input type='text' id='name' name='name' defaultValue={food?.name} className='md:w-[50%]' />
                 {error.name && <div className='text-destructive'>{error.name}</div>}
             </div>
 
             <div className='flex flex-col gap-2'>
                 <Label htmlFor='Food description' className='text-xl font-bold' >Food description</Label>
-                <Textarea id='description' name='description' defaultValue={food?.description} className='w-[50%]' />
+                <Textarea id='description' name='description' defaultValue={food?.description} className='md:w-[50%]' />
                 {error.description && <div className='text-destructive'>{error.description}</div>}
 
             </div>
@@ -59,7 +59,7 @@ const AddItemForm = ({ food }:{ food?: IFood | null}) => {
                 <div className='flex flex-col  gap-2'>
                     <Label htmlFor='Food description' className='text-xl font-bold' >Category</Label>
                     <Select name='category' defaultValue={food?.category} >
-                        <SelectTrigger className="w-[180px]">
+                        <SelectTrigger className="md:w-[180px]">
                             <SelectValue placeholder="Category" />
                         </SelectTrigger>
                         <SelectContent>

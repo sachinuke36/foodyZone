@@ -43,7 +43,7 @@ const CartPage = async() => {
 // }
  let subtotal = 0;
   return (
-    <div className="flex flex-col gap-10 w-[80%] mx-auto  my-5">
+    <div className="flex flex-col gap-10 w-[100%] md:w-[80%] mx-auto  my-5">
       <Table className=" ">
          <TableHeader>
             <TableRow>
@@ -61,7 +61,7 @@ const CartPage = async() => {
                   subtotal += cartInfo[item._id]*item.price
                   return ( <TableBody key={item._id}>
                     <TableRow>
-                      <TableCell className="font-medium"><Image alt='product image' height="40" width="40" src={item.image}/></TableCell>
+                      <TableCell className=" text-sm md:font-medium"><Image alt='product image' height="40" width="40" src={item.image}/></TableCell>
                       <TableCell>{ item.name }</TableCell>
                       <TableCell>{ formatCurrency(item.price / 100) }</TableCell>
                       <AddAndRemoveButton foodId={item._id.toString()} userId={user[0]._id.toString()}  quantity={cartInfo[item._id]}/>
@@ -85,7 +85,7 @@ export default CartPage
 
 
 const CartTotal = ({subtotal}:{subtotal:number})=>{
-  return <div className="w-[40%] flex flex-col gap-2">
+  return <div className="w-[100%] px-2 md:w-[40%] flex flex-col gap-2">
     <h1 className="text-[22px] font-extrabold">Cart Total</h1>
      <Table>
         <TableBody>
