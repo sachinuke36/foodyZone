@@ -12,14 +12,30 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Google({
       clientId:process.env.AUTH_GOOGLE_ID,
       clientSecret:process.env.AUTH_GOOGLE_SECRET,
-      profile(profile) {
-        return { id: profile.id,
-            name: profile.name,
-            email: profile.email,
-            image: profile.picture,
-            role: profile.role  }
+    async  profile(profile) {
+      console.log(profile);
+      await connectDB();
+      const existingUser = await User.findOne({ email: profile.email });
+      // console.log("existingUser",existingUser);
+      if (existingUser) {
+        return {
+          id: existingUser.googleId,
+          _id: existingUser._id,
+          name: existingUser.name,
+          email: existingUser.email,
+          image: existingUser.image,
+          role: existingUser.role,
+        };
       }
-    })
+      return {
+        id: profile.sub,
+        name: profile.name,
+        email: profile.email,
+        image: profile.picture,
+        role: "user", 
+      };
+    },
+  }),
   ],
 
   callbacks: {
@@ -27,7 +43,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if(account?.provider === "google"){
           try {
             const {email, name, image, id, role} = user;
-            console.log("role from google",role)
+            // console.log("role from google",role)
 
             await connectDB();
             const alreadyUser = await User.findOne({email});
@@ -92,45 +108,3 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
 
 
-// // auth.ts
-// import NextAuth from "next-auth";
-// import { PrismaAdapter } from "@auth/prisma-adapter";
-// import { prisma } from "@/prisma";
-// import GoogleProvider from "next-auth/providers/google"; // Ensure you're using the correct import for GoogleProvider
-// import { stripe } from "./utils/constants";
-
-// // NextAuth options
-// export const authOptions = {
-//   adapter: PrismaAdapter(prisma),
-//   providers: [
-//     GoogleProvider({
-//       clientId: process.env.GOOGLE_CLIENT_ID!,
-//       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-//     }),
-//   ],
-//   events: {
-//     createUser: async ({ user }) => {
-//       const customer = await stripe.customers.create({
-//         email: user.email!,
-//         name: user.name!,
-//       });
-//       await prisma.user.update({
-//         where: {
-//           id: user.id,
-//         },
-//         data: {
-//           stripeId: customer.id,
-//         },
-//       });
-//     },
-//   },
-// };
-
-// // Export handlers
-// const authHandler = NextAuth(authOptions);
-// export const handlers = {
-//   GET: authHandler,
-//   POST: authHandler,
-// };
-
-// export default authHandler; // Default export for API route usage

@@ -15,7 +15,7 @@ const getSalesData = async()=>{
      ])
     }
 
-console.log(data)
+// console.log(data)
     // const data = await db.order.aggregate({
         // _sum:{pricePaid:true},
         // _count:true

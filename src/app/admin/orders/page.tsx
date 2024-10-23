@@ -4,6 +4,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell } from "@/components/ui/table";
 import { formatNumber } from "@/lib/formatter";
+import { Food } from "@/models/foodModel";
 import Order from "@/models/orderModel";
 import { User } from "@/models/userModel";
 import { connectDB } from "@/utils/constants";
@@ -11,17 +12,22 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 
 const AdminOrdersPage = async () => {
+    await connectDB()
     const orderData = await Order.find({
         payment: true
-    });
-    console.log(orderData);
+    }).sort({ date: -1 });
+
+    // console.log(orderData);
     const session = await auth();
     const userData = await User.find({ email: session?.user.email });
 
     const food = await getFoodData();
 
 
-
+    interface items{
+        foodId:string,
+        quantity:number
+    }
 
 
     return (
@@ -29,9 +35,9 @@ const AdminOrdersPage = async () => {
             <Table>
                 {
                     orderData.map((order) => {
-                        let foodMap = {};
+                        let foodMap:{[name:string]:number} = {};
 
-                        order.items.forEach((item: Object) => {
+                        order.items.forEach((item: items) => {
                             Object.entries(item).forEach(([foodId, quantity]) => {
                                 // Find the corresponding food item
                                 const foodItem = food.find((f) => f._id == foodId);

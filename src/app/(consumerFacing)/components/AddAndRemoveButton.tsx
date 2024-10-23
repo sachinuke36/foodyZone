@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 const AddAndRemoveButton = ({quantity, foodId, userId}:{quantity:number, foodId:string, userId:string}) => {
     const router = useRouter();
   return (
-    <div >
+    < >
         <TableCell className="flex gap-2 items-center">
          <Button onClick={async()=>{
             await addItem(quantity,foodId,userId)
@@ -21,7 +21,7 @@ const AddAndRemoveButton = ({quantity, foodId, userId}:{quantity:number, foodId:
          }}>-</Button>
         </TableCell>
         
-    </div>
+    </>
   )
 }
 

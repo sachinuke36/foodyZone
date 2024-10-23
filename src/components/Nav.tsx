@@ -16,7 +16,6 @@ import { LogOut, Menu, X } from 'lucide-react';
 
 const Nav = ({ children, user }: { children: ReactNode, user:User }) => {
     const [toggleMenu, setToggleMenu] = useState(false);
-    // console.log("user",user);
     const router = useRouter()
   const  handleSignInClick =()=>{
     signIn("google")
@@ -28,7 +27,7 @@ const Nav = ({ children, user }: { children: ReactNode, user:User }) => {
         <div className="sm:flex hidden">
         {children}
         </div>
-        <div className="flex sm:flex hidden items-center justify-around" >
+        <div className=" sm:flex hidden items-center justify-around" >
             {!user ?  <Button variant='outline' onClick={handleSignInClick} >Sign In </Button>:(<div className="flex items-center justify-aroun gap-2">
                 <Image src={user.image!} width={40} height={40} className="  rounded-full" alt={user.name!}/>
                 <LogOut className=" hover:cursor-pointer  mx-auto" onClick={()=>signOut()} />

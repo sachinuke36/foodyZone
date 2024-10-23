@@ -42,9 +42,10 @@ const CartPage = async() => {
 //   );
 // }
  let subtotal = 0;
+ if(!(foodlist && cartInfo)) return <h1 className="text-center text-[25px] w-full font-extrabold  mt-[20%]">Your cart is empty</h1>
   return (
     <div className="flex flex-col gap-10 w-[100%] md:w-[80%] mx-auto  my-5">
-      <Table className=" ">
+   {foodlist && cartInfo ? <Table className=" ">
          <TableHeader>
             <TableRow>
                <TableHead>Items</TableHead>
@@ -67,13 +68,13 @@ const CartPage = async() => {
                       <AddAndRemoveButton foodId={item._id.toString()} userId={user[0]._id.toString()}  quantity={cartInfo[item._id]}/>
                       <TableCell >{formatCurrency((item.price / 100) * cartInfo[item._id])}</TableCell>
                     </TableRow>
-                    <div/>
+                    {/* <div/> */}
                   </TableBody>
                   )
-                }
+                }else return null
              })
            }
-      </Table>
+      </Table>: null}
         <CartTotal subtotal={subtotal} />
 
     </div>

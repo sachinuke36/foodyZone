@@ -1,7 +1,5 @@
 import { auth } from "@/auth";
 import Nav, {NavLink} from "@/components/Nav";
-// import  NavLink  from "@/components/NavLink";
-import React from "react";
 
 const AdminLayout = async({
     children,

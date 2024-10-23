@@ -53,7 +53,7 @@ const totalQuantity = Object.values(quantity).reduce((accumulated, currentValue)
  
   return (
     <div className="">
-      <div className="flex flex-wrap gap-3 justify-evenly">
+      <div className="flex flex-wrap gap-3 justify-evenly mb-10">
         {foodItems?.map((food:IFood) => (
           <FoodCard
             key={food._id}

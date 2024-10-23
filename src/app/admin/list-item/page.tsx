@@ -22,7 +22,7 @@ const ListItems = async () => {
             // _count: { $sum: { orders: 1 } }
         }
     ));
-    console.log("food",food)
+    // console.log("food",food)
 
     if(food.length === 0) return <p>No products found</p>
 

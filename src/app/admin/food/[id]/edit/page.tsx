@@ -9,7 +9,7 @@ const EditFoodItemPage = async({params:{id}}:{params:{id:string}}) => {
 
     const food = await Food.findById({_id:id})
 
-    console.log(food);
+    // console.log(food);
 
     return (
         <Card>
