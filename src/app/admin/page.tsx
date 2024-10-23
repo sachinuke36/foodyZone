@@ -10,6 +10,7 @@ import getSalesData from "./_backend/getSalesData";
 import { formatCurrency, formatNumber } from "@/lib/formatter";
 import getUserData from "./_backend/getUserData";
 import getProductData from "./_backend/getFoodData";
+import { DashboardCard } from "./_components/DashboardCard";
 
 const AdminDashboard = async () => {
     const [salesData, userData, productData] = await Promise.all([
@@ -41,22 +42,3 @@ const AdminDashboard = async () => {
 
 export default AdminDashboard;
 
-type DashboardCardProps = {
-    title: string;
-    description: string;
-    content: string;
-};
-
-export const DashboardCard = ({ title, description, content }: DashboardCardProps) => {
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle>{title}</CardTitle>
-                <CardDescription>{description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <p>{content}</p>
-            </CardContent>
-        </Card>
-    );
-};
