@@ -67,22 +67,22 @@ export const placeOrder = async ( orderItems: Object,subtotal: number, formData:
         await User.findByIdAndUpdate(user[0]._id,{cartData:{}}); // empty cart
 
         // console.log("cartData",cartData)
-        let line_item = food.map((item)=>{
-            if(cartData[item._id]>0){
+        // let line_item = food.map((item)=>{
+        //     if(cartData[item._id]>0){
 
-                return ({ price_data:{
-                    currency : "inr",
-                    product_data :{
-                        name: item.name
-                    },
-                    unit_amount : item.price * 100 
-                },
-                quantity: cartData[item._id]
-            })}}) 
+        //         return ({ price_data:{
+        //             currency : "inr",
+        //             product_data :{
+        //                 name: item.name
+        //             },
+        //             unit_amount : item.price * 100 
+        //         },
+        //         quantity: cartData[item._id]
+        //     })}}) 
             // console.log("line-items-first",line_item);
 
 
-             line_item = food.map(item => {
+            let line_item = food.map(item => {
                 if (cartData[item._id] > 0) {
                     return {
                         price_data: {
@@ -90,15 +90,13 @@ export const placeOrder = async ( orderItems: Object,subtotal: number, formData:
                             product_data: {
                                 name: item.name,
                             },
-                            unit_amount: item.price * 80, // Price in cents
+                            unit_amount: item.price * 80, 
                         },
                         quantity: cartData[item._id],
                     };
                 }
-                return null; // Return null for non-relevant items
-            }).filter(item => item !== null); // Filter out null/undefined items
-            // console.log("line-items",line_item);
-            // return
+                return null; 
+            }).filter(item => item !== null); 
 
             line_item.push({ price_data:{
                 currency : "inr",
