@@ -1,9 +1,6 @@
 import NextAuth, { AuthError } from "next-auth"
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import {prisma} from "@/prisma"
 import Google from "next-auth/providers/google"
 import { connectDB, stripe } from "./utils/constants"
-import { PrismaClient } from "@prisma/client"
 import { User } from "./models/userModel"
 
 

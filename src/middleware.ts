@@ -1,5 +1,4 @@
-
-import { auth } from "@/auth"
+export const runtime = 'nodejs'
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { decode } from "next-auth/jwt";
