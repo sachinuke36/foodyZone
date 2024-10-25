@@ -6,7 +6,8 @@ import { decode } from "next-auth/jwt";
 // export { auth as middleware } from "@/auth"
 
  const middleware = async (req:NextRequest)=>{
-    const cookis = cookies().get('authjs.session-token')
+    const cookis = cookies().get('authjs.session-token');
+    // console.log(cookis, process.env.AUTH_SECRET)
     let user = await decode({token:cookis?.value!,
       salt:cookis?.name!,
       secret:process.env.AUTH_SECRET!

@@ -32,14 +32,16 @@ const frontend_url = 'http://localhost:3000'
 
 export const placeOrder = async ( orderItems: Object,subtotal: number, formData: FormData) => {
     // console.log("yaha aya tha")
-    console.log(formData)
+    // console.log(formData)
    await connectDB()
     const formDataObject = Object.fromEntries(formData.entries());
 
 
     const result = indianAddressSchema.safeParse(formDataObject);
     if (!result.success) {
-        return result.error.formErrors.fieldErrors;
+        return {
+            success: false,
+            error : result.error.formErrors.fieldErrors}
     }
       const data = result.data;
       console.log(data)
