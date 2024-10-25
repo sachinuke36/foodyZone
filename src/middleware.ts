@@ -2,6 +2,7 @@ export const runtime = 'nodejs'
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { decode } from "next-auth/jwt";
+import { auth } from "./auth";
 
 // export { auth as middleware } from "@/auth"
 
@@ -13,7 +14,10 @@ import { decode } from "next-auth/jwt";
       secret:process.env.AUTH_SECRET!
 
     })
+    const session = await auth();
+    console.log(cookis, "cookis");
     console.log("from middleware",user)
+    console.log("from middleware", session)
     if(req.nextUrl.pathname.startsWith('/admin')){
       const url = new URL("/admin", req.nextUrl.origin);
       if(user?.role !== "admin") return NextResponse.redirect('http://localhost:3000/')

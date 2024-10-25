@@ -77,10 +77,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return token;
 
     },
-    // session({ session, user }) {
-    //   session.user.role = user.role
-    //   return session
-    // }
+    session({ session, user }) {
+      session.user.role = user.role
+      return session
+    }
   },
   // events:{
   //   createUser: async({user})=>{
