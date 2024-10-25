@@ -13,9 +13,9 @@ const {cartData, total, user} = await getOrderInfo()
 // console.log("total",formatCurrency(total/100))
 // console.log("type of cartData", typeof(cartData))
   return (
-    <div className=" md:w-[80%]  w-[100%] mt-10 mx-auto flex md:flex-row gap-2 flex-col   justify-evenly" >
+    <div className=" md:w-[80%]  w-[90%] mt-10 mx-auto flex md:flex-row gap-2 flex-col   justify-evenly" >
       <DeliveryInformationForm orderItems={cartData} subtotal={total} userId={user[0]._id.toString()} />
-      <div className="md:w-[50%] w-[100%]">
+      <div className="md:w-[50%] w-[90%]">
         <CartTotal subtotal={total}/>
       </div>
     </div>
