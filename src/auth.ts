@@ -1,4 +1,4 @@
-export const runtime = 'nodejs'
+// export const runtime = 'nodejs'
 
 import NextAuth, { AuthError } from "next-auth"
 import Google from "next-auth/providers/google"
