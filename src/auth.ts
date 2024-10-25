@@ -26,6 +26,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return {
         id: profile.sub,
+        _id: null,
         name: profile.name,
         email: profile.email,
         image: profile.picture,
@@ -70,7 +71,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async  jwt({token, user}){
       if(user){
         const u = await User.findOne({email:user.email});
-        token.role = u.role as string;
+        token.role = u?.role as string ?? "user";
       }
       return token;
 
