@@ -14,6 +14,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       await connectDB();
       const existingUser = await User.findOne({ email: profile.email });
       // console.log("existingUser",existingUser);
+      console.log(process.env.AUTH_GOOGLE_ID)
       if (existingUser) {
         return {
           id: existingUser.googleId,
