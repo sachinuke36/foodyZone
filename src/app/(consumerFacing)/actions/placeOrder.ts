@@ -1,6 +1,4 @@
-
 "use server"
-
 import { auth } from "@/auth"
 import { Food } from "@/models/foodModel";
 import Order from "@/models/orderModel"
@@ -13,7 +11,7 @@ import { connectDB } from "@/utils/constants";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 
-const frontend_url = 'http://localhost:3000'
+const frontend_url = 'https://foody-zone-one.vercel.app'
 
 // Schema for adding a new food item
  const indianAddressSchema = z.object({
