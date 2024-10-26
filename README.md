@@ -8,7 +8,7 @@ NEXT_PUBLIC_STRIPE_PUBLIC_KEY
 STRIPE_SECRET_KEY 
 MONGO_URI
 ```
-# .env.local
+## .env.local
 ```bash
 AUTH_SECRET
 AUTH_GOOGLE_ID
