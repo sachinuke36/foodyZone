@@ -2,6 +2,19 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+## .env
+```bash
+NEXT_PUBLIC_STRIPE_PUBLIC_KEY 
+STRIPE_SECRET_KEY 
+MONGO_URI
+```
+#.env.local
+```bash
+AUTH_SECRET
+AUTH_GOOGLE_ID
+AUTH_GOOGLE_SECRET
+```
+
 First, run the development server:
 
 ```bash
