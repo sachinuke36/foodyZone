@@ -1,5 +1,5 @@
 
-Open [Deployed Link]([https://foody-zone-one.vercel.app])
+Open [Deployed Link](https://foody-zone-one.vercel.app)
 
 ## Getting Started
 
