@@ -1,6 +1,5 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Open [Deployed Link]([http://localhost:3000](https://foody-zone-one.vercel.app) 
+Open [Deployed Link]([https://foody-zone-one.vercel.app])
 
 ## Getting Started
 
